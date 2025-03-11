@@ -1,0 +1,25 @@
+@startuml classDiagram
+skinparam classAttributeIconSize 0
+
+abstract class Snapshot{
+    +getText() : string
+}
+class SnapshotText {
+    -text : string
+    +getText(): string
+}
+class TextEditor{
+    -text : string
+    +save() : SnapshotText
+    +restore(SnapshotText)
+}
+class BackupManager{
+    -history[] : Snapshot
+    -ptr_edit : TextEditor
+    +backup()
+    +undo()
+    +showHistory()
+}
+Snapshot -- SnapshotText
+BackupManager *-- Snapshot
+TextEditor -- SnapshotText
