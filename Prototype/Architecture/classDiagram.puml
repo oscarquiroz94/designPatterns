@@ -1,37 +1,61 @@
 @startuml classDiagram
+skinparam classAttributeIconSize 0
 class Ability {
   -atack: int
   -defense: int
   -velocity: int
+  +getAttack():int
+  +getDefense():int
+  +getVelocity():int
 }
 class AbilityArcher {
   -range: int
+  +getRange():int
 }
 class AbilityInfantry {
   -hardness: int
+  +getHardness():int
 }
 class AbilityMagician {
   -invisibility: int
+  +getInvisibility():int
 }
 AbilityArcher -- Ability
 AbilityInfantry -- Ability
 AbilityMagician -- Ability
 
-class Hero{
+abstract class Hero{
   -name: string
   -aparience: string
   -experience: int
   -level: int
   -health: int
+  +clone() abstract
+  +getAbility() abstract
+  +setName(string)
+  +setAparience(string)
+  +getName():string
+  +getAparience():string
+  +getExperience():int
+  +getLevel():int
 }
 class HeroArcher {
-  -Ability: AbilityArcher
+  -ability: AbilityArcher
+  -arctype: string
+  +clone():Hero
+  +getAbility():Ability
 }
 class HeroInfantry {
-  -Ability: AbilityInfantry
+  -ability: AbilityInfantry
+  -infantrytype: string
+  +clone():hero
+  +getAbility():Ability
 }
 class HeroMagician {
-  -Ability: AbilityMagician
+  -ability: AbilityMagician
+  -magiciantype: string
+  +clone():hero
+  +getAbility():Ability
 }
 Hero -- HeroArcher
 Hero -- HeroInfantry 
