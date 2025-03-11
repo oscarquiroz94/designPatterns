@@ -1,0 +1,43 @@
+@startuml classDiagram
+class Ability {
+  -atack: int
+  -defense: int
+  -velocity: int
+}
+class AbilityArcher {
+  -range: int
+}
+class AbilityInfantry {
+  -hardness: int
+}
+class AbilityMagician {
+  -invisibility: int
+}
+AbilityArcher -- Ability
+AbilityInfantry -- Ability
+AbilityMagician -- Ability
+
+class Hero{
+  -name: string
+  -aparience: string
+  -experience: int
+  -level: int
+  -health: int
+}
+class HeroArcher {
+  -Ability: AbilityArcher
+}
+class HeroInfantry {
+  -Ability: AbilityInfantry
+}
+class HeroMagician {
+  -Ability: AbilityMagician
+}
+Hero -- HeroArcher
+Hero -- HeroInfantry 
+Hero -- HeroMagician
+
+HeroArcher *-- AbilityArcher
+HeroInfantry *-- AbilityInfantry
+HeroMagician *-- AbilityMagician
+@enduml
